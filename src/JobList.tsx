@@ -1,13 +1,4 @@
-type Job = {
-
-    id: number,
-    company: string,
-    jobTitle: string,
-    contact: string,
-    contacted: boolean,
-    rejected: boolean  
-  
-}
+import { Job } from './models/Job'
 // Front brackets are the props, back defines what the props are.
 export const JobList = ({jobs, setJob}: {jobs: Job[], setJob: React.Dispatch<React.SetStateAction<Job[]>>}) => {
 

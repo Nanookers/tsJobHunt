@@ -25,9 +25,8 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
   place-items: center;
-  min-width: 320px;
+  min-width: 1280px;
   min-height: 100vh;
 }
 
@@ -56,10 +55,10 @@ button:focus-visible {
 }
 
 table{
-  width: 150%;
+  width: 100%;
   border: 2px solid;
-  
   border-collapse:separate;
+  border-spacing: 9 3px;
 }
 
 @media (prefers-color-scheme: light) {

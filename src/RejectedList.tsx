@@ -1,15 +1,6 @@
 import * as React from "react"
 
-type Job = {
-
-    id: number,
-    company: string,
-    jobTitle: string,
-    contact: string,
-    contacted: boolean,
-    rejected: boolean  
-  
-}
+import { Job } from './models/Job'
 
 export const RejectedList = ({jobs, setJob}: {jobs: Job[], setJob: React.Dispatch<React.SetStateAction<Job[]>>}) => {
   
