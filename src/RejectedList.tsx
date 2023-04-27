@@ -1,3 +1,5 @@
+import * as React from "react"
+
 type Job = {
 
     id: number,
@@ -8,8 +10,11 @@ type Job = {
     rejected: boolean  
   
 }
-// Front brackets are the props, back defines what the props are.
-export const JobList = ({jobs, setJob}: {jobs: Job[], setJob: React.Dispatch<React.SetStateAction<Job[]>>}) => {
+
+export const RejectedList = ({jobs, setJob}: {jobs: Job[], setJob: React.Dispatch<React.SetStateAction<Job[]>>}) => {
+  
+    // Filter For only Rejected Jobs
+    const rejectsOnly = jobs.filter(job => job.rejected === true)
 
     const setToContacted = (jobId: number) => {
         const updatedJobs = jobs.map(job => {
@@ -22,23 +27,9 @@ export const JobList = ({jobs, setJob}: {jobs: Job[], setJob: React.Dispatch<Rea
         setJob(updatedJobs);
     }
 
-    const setToRejected = (jobId: number) => {
-        const updatedRejection = jobs.map(job => {
-            if(job.id === jobId) {
-                return {...job, rejected: true}
-            } else {
-                return job;
-            }
-        })
-        setJob(updatedRejection)
-    }
-
-    // Filter to take out the rejected applications.
-    const filterOutRejects = jobs.filter(job => job.rejected === false)
-
   return (
     <div>
-        <h2>Open Jobs</h2>
+        <h2>Rejected Jobs</h2>
         <table>
             <thead>
                 <tr>
@@ -50,13 +41,13 @@ export const JobList = ({jobs, setJob}: {jobs: Job[], setJob: React.Dispatch<Rea
                 </tr>
             </thead>
             <tbody>
-                 {filterOutRejects.map((job) => (
+                 {rejectsOnly.map((job) => (
                 <tr key={job.id}>
                     <td>{job.company}</td>
                     <td>{job.jobTitle}</td>
                     <td>{job.contact}</td>
                     <td><input type="checkbox" checked={job.contacted} onChange={() => setToContacted(job.id)} /></td>
-                    <td><input type="checkbox" checked={job.rejected} onChange={() => setToRejected(job.id)} /></td>
+                    <td><input type="checkbox" checked={job.rejected} /></td>
                 </tr>
                 ))} 
             </tbody>

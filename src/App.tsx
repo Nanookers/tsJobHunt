@@ -1,21 +1,17 @@
 import { useState } from 'react'
 import './App.css'
 
+// This is the Model for the Job Object 
+import { Job } from './models/Job'
+
+// These are the components
 import { JobList } from './JobList';
+import { RejectedList } from './RejectedList'
 
 // Think of this like my model
-type Job = {
-
-  id: number,
-  company: string,
-  jobTitle: string,
-  contact: string,
-  contacted: boolean,
-  rejected: boolean  
-
-}
 
 function App() {
+
   // Initializing an empty array of Job objects
   const [jobs, setJob] = useState<Job[]>([]);
 
@@ -69,6 +65,7 @@ function App() {
         <button type='submit'>Submit</button>
       </form>
       <JobList jobs={jobs} setJob={setJob}/>
+      <RejectedList jobs={jobs} setJob={setJob}/>
     </>
   )
 }
